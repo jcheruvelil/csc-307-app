@@ -110,7 +110,7 @@ app.post("/users", (req, res) => {
 app.delete("/users/:id", (req, res) => {
   const userToDelete = req.params["id"];
   deleteUser(userToDelete);
-  res.send();
+  res.status(204).send();
 });
 
 app.listen(port, () => {
