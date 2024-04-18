@@ -14,7 +14,13 @@ function MyApp() {
 
   function updateList(person){
     postUser(person)
-    .then(() => setCharacters([...characters, person]))
+    .then((response) => {
+      if(response.status == 201){
+      setCharacters([...characters, person])}
+    else{
+      console.error('Failed to insert user');
+    }})
+
     .catch((error) => {
       console.log(error);
     })
@@ -33,7 +39,6 @@ function MyApp() {
       },
       body: JSON.stringify(person)
     });
-
     return promise;
   }
 
